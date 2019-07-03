@@ -35,4 +35,5 @@ public class MirrorServlet extends HttpServlet {
         variable.put("param",param);
         return variable;
     }
+
 }
