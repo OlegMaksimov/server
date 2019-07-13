@@ -40,4 +40,13 @@ public class UserProfile {
     public String getEmail() {
         return email;
     }
+
+    @Override
+    public String toString() {
+        return "UserProfile{" +
+                "login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                '}';
+    }
 }

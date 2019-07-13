@@ -24,7 +24,9 @@ public class SignUpServlet extends HttpServlet {
                 .setPassword(req.getParameter("password"));
         if (StringUtil.isBlank(userProfile.getLogin()) || StringUtil.isBlank(userProfile.getPassword())) {
             throw new ServletException("нет соответсвующих параметров");
-        };
+        }
         accountService.signUp(userProfile);
+        resp.setStatus(HttpServletResponse.SC_OK);
+        resp.getWriter().println("SignedUp");
     }
 }

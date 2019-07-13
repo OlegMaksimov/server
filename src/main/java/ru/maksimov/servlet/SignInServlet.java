@@ -22,16 +22,17 @@ public class SignInServlet extends HttpServlet {
         UserProfile userProfile = new UserProfile()
                 .setLogin(req.getParameter("login"))
                 .setPassword(req.getParameter("password"));
+
          if (StringUtil.isBlank(userProfile.getLogin()) || StringUtil.isBlank(userProfile.getPassword())) {
               throw new ServletException("нет соответсвующих параметров");
-         };
+         }
         Boolean isSign = accountService.signIn(userProfile);
         if (isSign) {
             resp.setStatus(HttpServletResponse.SC_OK);
-            resp.getWriter().print(String.format("Authorized:%s",userProfile.getLogin()));
+            resp.getWriter().println("Authorized: "+userProfile.getLogin());
         } else {
             resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-            resp.getWriter().print("Unauthorized");
+            resp.getWriter().println("Unauthorized");
         }
     }
 }
